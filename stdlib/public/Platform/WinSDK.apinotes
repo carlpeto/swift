@@ -29,8 +29,6 @@ Globals:
   Type: DWORD
 - Name: CREATE_NEW
   Type: DWORD
-- Name: CTRL_BREAK_EVENT
-  Type: DWORD
 - Name: CREATE_NEW_CONSOLE
   Type: DWORD
 - Name: CREATE_NEW_PROCESS_GROUP
