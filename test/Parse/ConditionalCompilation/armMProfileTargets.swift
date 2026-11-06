@@ -7,15 +7,12 @@
 // RUN: %swift -typecheck %s -verify -target armv7em-apple-none-macho -parse-stdlib
 
 #if _hasAtomicBitWidth(_64) || _hasAtomicBitWidth(_128)
-// This block should not be type checked.
 // M-profile cores only have word-sized atomics.
-let i: Int = "Hello"
+#error("M-profile targets should not have 64-bit or 128-bit atomics")
 #endif
 
 #if arch(arm) && os(none) && _pointerBitWidth(_32)
 #if _hasAtomicBitWidth(_8) && _hasAtomicBitWidth(_16) && _hasAtomicBitWidth(_32)
-class C {}
-var x = C()
+#warning("8, 16 and 32-bit atomics available") // expected-warning {{8, 16 and 32-bit atomics available}}
 #endif
 #endif
-var y = x
